@@ -1,0 +1,1 @@
+from .article_certificate import generate_article_certificate
