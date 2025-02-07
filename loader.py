@@ -11,6 +11,6 @@ bot = Bot(token=config.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseM
 storage = MemoryStorage()
 dp = Dispatcher(storage=storage)
 generator = CertificateGenerator(
-    template_path="license/license.jpg",
-    font_path="fonts/BelgianoSerif2.ttf"
+    template_path="data/license/license.jpg",
+    font_path="data/fonts/BelgianoSerif2.ttf"
 )

@@ -56,7 +56,7 @@ class CertificateGenerator:
             date_month: str,
             order_number: str,
             output_path: str
-    ) -> Optional[str]:
+    ) -> Optional[dict]:
         try:
             img = await self.load_image()
             draw = ImageDraw.Draw(img)
@@ -144,8 +144,7 @@ class CertificateGenerator:
 
             # Save asynchronously
             await asyncio.to_thread(img.save, output_path, "JPEG", quality=95)
-            return output_path
+            return {'data': output_path, 'ok': True}
 
         except Exception as e:
-            print(f"Error generating certificate: {str(e)}")
-            return None
+            return {'error': str(e), 'ok': False}
