@@ -1,1 +1,2 @@
 from .article_certificate import generate_article_certificate
+from .license_document import generate_license, CertificateGenerator
