@@ -9,6 +9,7 @@ class CertificateGenerator:
         self.template_path = template_path
         self.font_path = font_path
         self.BLUE_COLOR = (0, 51, 102)  # RGB for dark blue
+        self.BLACK_COLOR = (0, 0, 0)  # RGB for dark blue
 
         # Maximum widths for text elements (in pixels)
         self.MAX_NAME_WIDTH = 1800  # Maximum width for name
@@ -82,7 +83,7 @@ class CertificateGenerator:
             )
 
             # Draw direction with adaptive font
-            direction_text = f'“{direction}” bo‘yicha'
+            direction_text = f'“{direction}”'
             direction_bbox = direction_font.getbbox(direction_text)
             direction_height = direction_bbox[3] - direction_bbox[1]
             draw.text(
@@ -101,7 +102,7 @@ class CertificateGenerator:
                 (center_x + 165, bottom_start_y),
                 f"{academic_year_first}",
                 font=regular_font,
-                fill=self.BLUE_COLOR,
+                fill=self.BLACK_COLOR,
                 anchor="ra"
             )
 
@@ -109,7 +110,7 @@ class CertificateGenerator:
                 (center_x + 320, bottom_start_y),
                 f"{academic_year_last}",
                 font=regular_font,
-                fill=self.BLUE_COLOR,
+                fill=self.BLACK_COLOR,
                 anchor="ra"
             )
 
@@ -118,7 +119,7 @@ class CertificateGenerator:
                 (center_x + 320, bottom_start_y + 88),
                 f"{date_year}",
                 font=regular_font,
-                fill=self.BLUE_COLOR,
+                fill=self.BLACK_COLOR,
                 anchor="ra"
             )
 
@@ -126,7 +127,7 @@ class CertificateGenerator:
                 (center_x + 750, bottom_start_y + 84),
                 f"{date_month}",
                 font=regular_font1,
-                fill=self.BLUE_COLOR,
+                fill=self.BLACK_COLOR,
                 anchor="ra"
             )
 
@@ -135,7 +136,7 @@ class CertificateGenerator:
                 (center_x + 320, bottom_start_y + 176),
                 f"{order_number}",
                 font=regular_font,
-                fill=self.BLUE_COLOR,
+                fill=self.BLACK_COLOR,
                 anchor="ra"
             )
 
