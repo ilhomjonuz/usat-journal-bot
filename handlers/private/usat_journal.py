@@ -60,9 +60,10 @@ async def article_get_date(msg: Message, state: FSMContext):
     await state.clear()
     cert_resp = await generate_article_certificate(**data)
     if cert_resp['ok']:
-        await msg.answer("⏳ Sertifikat tayyorlanmoqda...", reply_markup=admin_menu)
+        await_msg = await msg.answer("⏳ Sertifikat tayyorlanmoqda...")
         cert_image = FSInputFile(cert_resp['result'])
-        await msg.answer_document(cert_image)
+        await msg.answer_document(cert_image, reply_markup=admin_menu)
+        await await_msg.edit_text("✅ Sertifikat muvaffaqiyatli yuborildi!")
     else:
         await msg.answer(cert_resp['result'], reply_markup=admin_menu)
 

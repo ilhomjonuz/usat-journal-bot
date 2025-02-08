@@ -1,4 +1,5 @@
 import asyncio
+from token import AWAIT
 
 from aiogram import F
 from aiogram.filters import StateFilter
@@ -61,9 +62,10 @@ async def license_get_order_number(msg: Message, state: FSMContext):
     await state.clear()
     resp = await generate_license(**data)
     if resp['ok']:
-        await msg.answer("⏳ Guvohnoma tayyorlanmoqda...", reply_markup=admin_menu)
+        await_msg = await msg.answer("⏳ Guvohnoma tayyorlanmoqda...")
         cert_image = FSInputFile(resp['data'])
-        await msg.answer_document(cert_image)
+        await msg.answer_document(cert_image, reply_markup=admin_menu)
+        await await_msg.edit_text("✅ Guvohnoma muvaffaqiyatli yuborildi.")
     else:
         await msg.answer(resp['error'], reply_markup=admin_menu)
 

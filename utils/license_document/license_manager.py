@@ -5,9 +5,10 @@ import os
 
 
 class CertificateGenerator:
-    def __init__(self, template_path: str, font_path: str):
+    def __init__(self, template_path: str, font_path1: str, font_path2: str):
         self.template_path = template_path
-        self.font_path = font_path
+        self.font_path1 = font_path1
+        self.font_path2 = font_path2
         self.BLUE_COLOR = (0, 51, 102)  # RGB for dark blue
         self.BLACK_COLOR = (0, 0, 0)  # RGB for dark blue
 
@@ -26,7 +27,7 @@ class CertificateGenerator:
 
         while left <= right:
             mid = (left + right) // 2
-            font = ImageFont.truetype(self.font_path, mid)
+            font = ImageFont.truetype(self.font_path1, mid)
             bbox = font.getbbox(text)
             width = bbox[2] - bbox[0]
 
@@ -45,7 +46,7 @@ class CertificateGenerator:
 
         # Get adaptive font size
         font_size = self.get_adaptive_font_size(text, max_width, initial_size)
-        return ImageFont.truetype(self.font_path, font_size)
+        return ImageFont.truetype(self.font_path1, font_size)
 
     async def generate_certificate(
             self,
@@ -64,9 +65,9 @@ class CertificateGenerator:
 
             # Get adaptive fonts
             name_font = self.get_adaptive_font(full_name, is_name=True)
-            direction_font = self.get_adaptive_font(f'"{direction}" bo‘yicha', is_name=False)
-            regular_font = ImageFont.truetype(self.font_path, 55)
-            regular_font1 = ImageFont.truetype(self.font_path, 60)
+            direction_font = self.get_adaptive_font(f'"{direction}"', is_name=False)
+            regular_font = ImageFont.truetype(self.font_path2, 55)
+            regular_font1 = ImageFont.truetype(self.font_path2, 60)
 
             # Calculate positions
             center_x = img.width // 2
@@ -124,7 +125,7 @@ class CertificateGenerator:
             )
 
             draw.text(
-                (center_x + 750, bottom_start_y + 84),
+                (center_x + 765, bottom_start_y + 84),
                 f"{date_month}",
                 font=regular_font1,
                 fill=self.BLACK_COLOR,

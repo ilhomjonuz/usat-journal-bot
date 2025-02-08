@@ -12,5 +12,6 @@ storage = MemoryStorage()
 dp = Dispatcher(storage=storage)
 generator = CertificateGenerator(
     template_path="data/license/license.jpg",
-    font_path="data/fonts/BelgianoSerif2.ttf"
+    font_path1="data/fonts/GreatVibes-Regular.ttf",
+    font_path2="data/fonts/BelgianoSerif2.ttf",
 )
