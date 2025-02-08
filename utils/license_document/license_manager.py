@@ -76,7 +76,7 @@ class CertificateGenerator:
             name_bbox = name_font.getbbox(full_name)
             name_height = name_bbox[3] - name_bbox[1]
             draw.text(
-                (center_x, 1875),
+                (center_x, 1920),
                 full_name,
                 font=name_font,
                 fill=self.BLUE_COLOR,
@@ -88,7 +88,7 @@ class CertificateGenerator:
             direction_bbox = direction_font.getbbox(direction_text)
             direction_height = direction_bbox[3] - direction_bbox[1]
             draw.text(
-                (center_x, 2070),
+                (center_x, 2090),
                 direction_text,
                 font=direction_font,
                 fill=self.BLUE_COLOR,

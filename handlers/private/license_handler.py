@@ -15,7 +15,7 @@ from utils import generate_license
 
 @dp.message(BotAdminFilter(), F.text == "🎓 Guvohnoma uchun sertifikat")
 async def license_certificate(msg: Message, state: FSMContext):
-    await msg.answer("Sertifikat oluvchining ism-familiyasini yuboring:", reply_markup=ReplyKeyboardRemove())
+    await msg.answer("Guvohnoma oluvchining ism-familiyasini yuboring:", reply_markup=ReplyKeyboardRemove())
     await state.set_state(LicenseStates.fullname)
 
 
