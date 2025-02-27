@@ -71,7 +71,7 @@ async def generate_article_certificate(fullname, article, issue, volume, year, d
     # Adjust font size if needed
     while title_width > available_width and font_sizes['title'] > 30:
         font_sizes['title'] -= 5
-        title_font = ImageFont.truetype("data/fonts/GreatVibes-Regular.ttf", font_sizes['title'])
+        title_font = ImageFont.truetype("data/fonts/BelgianoSerif2.ttf", font_sizes['title'])
         title_bbox = draw.textbbox((0, 0), article, font=title_font)
         title_width = title_bbox[2] - title_bbox[0]
 
