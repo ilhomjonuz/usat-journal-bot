@@ -51,7 +51,7 @@ async def generate_article_certificate(fullname, article, issue, volume, year, d
     draw.text((name_x, name_y), name_text, font=name_font, fill=color)
 
     # Center and adjust article title with dynamic sizing
-    title_y = 1320  # Adjusted up from 1306 to maintain consistent vertical alignment
+    title_y = 1338  # Adjusted up from 1306 to maintain consistent vertical alignment
     title_font = fonts['title']
 
     # Calculate available width for article (accounting for quotes)
@@ -60,11 +60,11 @@ async def generate_article_certificate(fullname, article, issue, volume, year, d
     # Handle article length with adjusted vertical positioning
     if len(article) < 30:  # For short articles
         font_sizes['title'] = 110  # Increase size for short articles
-        title_y = 1310  # Slight adjustment for larger font to maintain vertical centering
+        title_y = 1300  # Slight adjustment for larger font to maintain vertical centering
     else:  # For longer articles
         font_sizes['title'] = 90  # Start with reply size
 
-    title_font = ImageFont.truetype("data/fonts/GreatVibes-Regular.ttf", font_sizes['title'])
+    title_font = ImageFont.truetype("data/fonts/BelgianoSerif2.ttf", font_sizes['title'])
     title_bbox = draw.textbbox((0, 0), article, font=title_font)
     title_width = title_bbox[2] - title_bbox[0]
 
