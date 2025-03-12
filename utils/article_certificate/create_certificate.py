@@ -1,3 +1,4 @@
+import asyncio
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
@@ -55,12 +56,15 @@ async def generate_article_certificate(fullname, article, issue, volume, year, d
     title_font = fonts['title']
 
     # Calculate available width for article (accounting for quotes)
-    available_width = img_width * 0.6  # Keep 60% constraint for quotes
+    available_width = img_width * 0.59  # Keep 59% constraint for quotes
 
     # Handle article length with adjusted vertical positioning
     if len(article) < 30:  # For short articles
         font_sizes['title'] = 110  # Increase size for short articles
         title_y = 1300  # Slight adjustment for larger font to maintain vertical centering
+    elif len(article) < 45:
+        font_sizes['title'] = 90  # Start with reply size
+        title_y = 1320
     else:  # For longer articles
         font_sizes['title'] = 90  # Start with reply size
 
@@ -115,3 +119,9 @@ async def generate_article_certificate(fullname, article, issue, volume, year, d
     img.save(output_path)
 
     return {'ok': True, 'result': output_path}
+
+
+if __name__ == '__main__':
+    asyncio.run(generate_article_certificate("Raximov Ilxomjon", "Using big data analytics to improve the organization of educational processes", 1, 2, 2026, '01.01.2026'))
+    asyncio.run(generate_article_certificate("Valiyev Alijon", "Development of e‒trade in the EAEU", 1, 2, 2026, '01.01.2026'))
+    asyncio.run(generate_article_certificate("Anvarov Shuxrat", "Assessment and typology of the pace of life of the population of the republic of Belarus and the republic of Uzbekistan", 1, 2, 2026, '01.01.2026'))
